@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objects</title>
+</head>
+<body>
+    <script>
+        "use strict";
+
+
+    // ESERCIZIO:Javascript nel quale definirete un array di oggetti, contenenti delle auto. 
+    // Ogni oggetto rappresenta un’auto e contiene tutte le sue proprietà’ come Modello, Marca, 
+    // Cilindrata e prezzo Realizzare una funzione in grado di trovare l’auto piu’ economica e una 
+    // funzione in grado di trovare la piu’ costosa
+
+
+    const carList = [
+        { brand : "Audi", model : "a1", color : "black", price: 18000},
+        { brand : "BMW", model : "x5", color : "grey", price: 25000},
+        { brand : "Volkswagen", model : "T-Roc", color : "white", price: 20000}
+    ];
+     function lowerPrice(list){
+        const primo = carList[0].price;
+        const secondo = carList[1].price;
+        const terzo = carList[2].price;
+        const prezzi = [primo,secondo,terzo];
+        console.log(prezzi)
+        const lowerPrice = Math.min(...prezzi);
+        return lowerPrice;
+
+     }
+     
+     console.log(lowerPrice(carList))
+
+     function hightestPrice(list) {
+        const primo = carList[0].price;
+        const secondo = carList[1].price;
+        const terzo = carList[2].price;
+        const prezzi = [primo,secondo,terzo];
+        const hightestPrice = Math.max(...prezzi);
+        return hightestPrice;
+
+     }
+     console.log(hightestPrice(carList))
+
+    </script>
+    
+</body>
+</html>
