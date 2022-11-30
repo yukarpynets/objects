@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esercizio Banca</title>
+    <style>
+        input{
+            padding: .5em 2em;
+            border-radius: 10px;
+            border: 1px solid green;
+            margin-bottom: 1em;
+        }
+
+        button {
+            margin: .5em;
+            border-radius: 5px;
+            padding: .5em 1em;
+            background-color: green;
+            color: white;
+            border: none;
+        }
+
+       
+
+
+
+    </style>
+</head>
+<body>
+    <!-- ESERCIZIO:Progettare un sito che rappresenti una banca. Il sito sarà composto da:
+    -un h1 che mostra la quantità di denaro dell’utente
+    -un input che permette all’utente di scrivere una quantità di denaro da inserire nel conto.
+    Questa verrà sommata a quella presente nel h1 dopo aver premuto il pulsante “Deposit”
+    -un input che permette all’utente di scrivere una quantità di denaro da ritirare dal conto.
+    Questa verrà sottratta a quella presente nel h1 dopo aver premuto il pulsante “Withdraw”. Se
+    l’importo inserito è superiore a quello presente nel conto, verrà mostrata un’alert notificando
+    l’utente che l’importo è troppo grande.
+    EXTRA: aggiungere un pulsante “Loan”, che quando premuto inserisce 1000 euro nel conto.
+    EXTRA2: aggiungere un pulsante “Withdraw all”, che quando premuto svuota il conto.
+    EXTRA3: inserire un h2 che mostri la quantità di denaro che avrà l’utente nel conto dopo 10
+    anni considerando l’importo attualmente inserito. Questa quantità verrà calcolata con un 4%
+    di interesse annuo, e dev’essere aggiornata ogni volta che l’utente inserisce/ritira denaro. -->
+
+    <h1 id="money-amount">quantità di denaro: </h1>
+    <input type="number" id="depositaSoldi" >
+    <input type="number" id="ritiraDenaro" >
+    <br>
+    <button id="deposit" onclick="depositMoney()"> DEPOSIT</button>
+    <button id="withdraw" onclick="withdrawMoney()"> WITHDRAW</button>
+    <button id="loan" onclick="loanMoney()"> LOAN </button>
+    <button id="withdrawAll" onclick="withdrawAll()"> WITHDRAW ALL </button>
+
+    <h2 id="interessi"> quantità di denaro fra 10 anni con 4%
+        di interesse annuo : </h2>
+
+    <script>
+        let balance = 0;
+        function userData(moneyQuantity) {
+            document.getElementById("money-amount").innerText = "quantità di denaro: " + moneyQuantity +"€";
+            afterYears()
+        }
+        
+
+        function depositMoney() {
+            let toAdd = document.getElementById("depositaSoldi").value;
+            balance += parseFloat(toAdd);
+            userData(balance)
+
+        }
+
+        function withdrawMoney(){
+            let toMinus = document.getElementById("ritiraDenaro").value;
+             if(balance < toMinus) {
+                alert("non ti do i soldi")
+             } else {
+                balance-=parseFloat(toMinus);
+                userData(balance);
+             }
+           
+        }
+
+        function loanMoney() {
+            balance += parseFloat(1000);
+            userData(balance);
+        }
+
+        function withdrawAll() {
+            balance -= balance;
+            userData(balance);
+
+        }
+
+        function afterYears() {
+            let percentForYear = balance;
+    
+            for ( let i=0; i<10; i++) {
+                percentForYear += (percentForYear * 0.04);
+                console.log(percentForYear)
+            }
+            
+            document.querySelector("#interessi").innerText= "quantità di denaro fra 10 anni: " + percentForYear.toFixed(2);
+            return percentForYear;
+        }
+        
+ 
+       
+    </script>
+    
+</body>
+</html>
