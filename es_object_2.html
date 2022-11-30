@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // ESERCIZIO: Scrivere una funzione che presa in input un array di stringhe ritorni 
+        // la lunghezza della stringa più lunga.
+
+        function longhestString(arr) {
+            let loghestWord=0;
+            for( let i = 0; i < arr.length; i++){
+                if(arr[i].length >= loghestWord){
+                    loghestWord = arr[i].length;
+                } 
+            }
+            return loghestWord;
+        }
+        console.log(longhestString(["ciao", "trova", "parola"]));
+
+        // ESERCIZIO: Scrivere una funzione getDigits che preso in input un numero intero, 
+        // attraverso un ciclo while, conti da quante cifre è formato.
+
+        function getDigits(num) {
+            let numInString = num.toString().split("");
+            let numElements = numInString.length;
+            return numElements;
+
+        }
+        console.log(getDigits(4534));
+
+        
+
+    </script>
+
+</body>
+
+</html>
